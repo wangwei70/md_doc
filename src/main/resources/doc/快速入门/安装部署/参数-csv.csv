@@ -1,0 +1,81 @@
+参数,默认取值,说明（取值范围，枚举，用途等）
+ extract.value.source , false ,变更值的抽取是否在源端处理， 如果在源端处理的话，那么进入到kafka的数值，只保留变更后的数据。
+ use.topic.merge , true ,是否将多个表的的数据合并到一个Topic里面， 默认是合并
+ use.flow.name.as.topic.name , false ,用界面输入的同步的名称作为topic的名称
+ kafka.bootstrap.servers , ,kafka地址
+ kafka.metric.topic.name , ,指标中的topic名称
+ server.port ,8080,web的端口
+ spring.datasource.web.driverClassName, org.h2.Driver ,h2数据库驱动名称
+ spring.datasource.web.jdbc-url , jdbc:h2:file:~/.h2/webdb;AUTO_SERVER=TRUE ,h2数据库的jdbc的url
+ spring.datasource.web.username , trans ,h2数据库的用户名称
+ spring.datasource.web.password , trans ,h2数据库的用户密码
+ amca.script.collect.file, antdb_collect_x86_64 ,antdb采集脚本
+ amca.script.assess.file , antdb_assessment_x86_64 ,antdb评估脚本
+ amca.assessRate ,60,评估率
+ amca.adapterMode , all ,会话评估方式：all:完全评估、syntax:语法评估
+ amca.realTime.assessRate ,1,实时评估率
+ amca.ignoreCase ,0,忽略大小写：0：否 1：是
+ amca.script.assess.file , antdb_assessment_x86_64 ,antdb评估脚本
+ amca.assessRate ,60,评估率
+ service.AmopsDatabaseLoadReportService.antdbScriptPath , /data/uiux/amops-demon/amops-test/awr ,antdb脚本文件路径
+ dataVerifate.fetchSize ,1000,设置游标每次从数据库获取数据的行数
+ dataVerifate.maxRows ,50000000,设置读取的最大行数(暂无使用)
+ dataVerifate.downMaxRows ,1000000,最大下载行数(暂无使用)
+ dataVerifate.maxQueryQueueSize ,5000,校验任务每一张表查询队列的大小
+ dataVerifate.detailQueueSize ,100000,校验任务每一张表表内容差异队列的大小
+ dataVerifate.batchInsertSize ,5000,数据校验批量插入的大小
+ dataVerifate.corePoolSize ,10,"数据校验任务核心线程池大小,10表示每个任务最多同时处理10张表"
+ dataVerifate.minIdle ,1,表示每个校验任务创建的数据库连接池的最小保持连接数
+ dataVerifate.dbMaxPoolSize ,21,表示数据校验任务最大创建的数据库连接数量
+ dataVerifate.connectionTimeout ,600000,"数据校验创建的连接,连接超时时间,10分钟"
+ dataVerifate.maximumPoolSize ,50,数据校验的线程池最大线程数量
+ dataVerifate.keepAliveTime ,1500,线程池中超过corePoolSize数目的空闲线程最大存活时间----30+单位TimeUnit
+ dataVerifate.workQueue ,500000,单校验任务最大处理的表数量
+ dataVerifate.distributeMaximumPoolSize ,50,分片查询的线程池最大线程数量
+ dataVerifate.distributeKeepAliveTime ,1500,分片线程池中超过corePoolSize数目的空闲线程最大存活时间----30+单位TimeUnit
+ dataVerifate.distributeWorkQueue ,500000,校验任务中分片查询最大处理的表数量
+ dataVerifate.distributeCorePoolSize ,20,校验任务中分片任务的最大核心线程池数量
+ dataVerifate.distributeMaxQueryQueueSize ,10000000,分片查询队列的大小
+ dataVerifate.distributeCapacityNum ,500,"分片表容量,容量超过500MB的表开启分片查询"
+ dataVerifate.maxNumPartitions ,20,"有主键表最大分片数量,20表示最多20个分片查询同一张表"
+ dataVerifate.noPkNumPartitions ,20,"无主键表最大分片数量,20表示最多20个分片查询同一张表"
+ dataVerifate.taskSemaphoreNum ,3,"最大任务并发数,表示最多同时校验3个任务"
+ dataVerifate.lobTypeFilter ,"BLOB,CLOB,NCLOB,LONG,RAW,LONG RAW,BFILE,XMLType,JSON,TEXT,BYTEA,tinyblob,tinytext,mediumblob,mediumtext,longblob,longtext  ","数据校验大字段过滤类型,属于这些类型的字段不进行select查询"
+ dataVerifate.dataTypeNameSet ," blob,clob,nclob,long,raw,long raw,bfile,xmltype,json,text,bytea,tinyblob,tinytext,mediumblob,mediumtext,longblob,longtext ","数据校验大字段名称类型,当大字段需要处理时,通过bytes获取数据,然后转换成hash值"
+ dataVerifate.lobDataLength ,4000,"大字段类型字段长度,字段长度超过4000时也认为属于大字段"
+ dataVerifate.pkLobFilterType ,1,"主键大字段的排除模式,默认主键不排除到大字段集合"
+ dataVerificate.dataType ," -4,-2,12,1111,2004,2011 ","字段的dataType属于这些类型时,转成二进制获取数据"
+ dataVerificate.oracleDataType ," -4,-3,-2,-1,2004,2005,2011 ","Oracle字段的dataType属于这些类型时,转成二进制获取数据"
+ dataVerificate.strDataType ," -15,1 ","字段的dataType属于这些类型时,转成字符串"
+ dataVerificate.dateDataType ," -102,-101,12,93 ","字段的dataType属于这些类型时,转成时间戳"
+ dataVerificate.dateFilterNameList ," varchar2,varchar,text ","字段的日期类型过滤,属于这些类型时,不按时间戳获取数据"
+ dataVerificate.dateColumnNameSet ," date,timestamp,datetime ","字段的日期类型过滤,属于这些类型时,按时间戳获取"
+ dataVerificate.tranType ,0,"转换类型:0-不转换,1-调用转换规则"
+ dataVerificate.logLevel , INFO ,"日志级别,属于DEBUG时不删除无主键表校验的临时文件"
+ dataVerificate.parallelNum ,0,"并发count的数量,为0时,不使用"
+ dataVerificate.partitionType ,1,"分区表查询配置,0-默认不按分区表查询,1-按分区表查询"
+ dataVerificate.checkFilePath,  ,"数据校验临时文件路径,默认当前项目路径"
+ dataVerificate.pkNumberType ," NUMBER,NUMERIC,Integer,BIGINT,INT ","主键拆分的数字类型,主键属于上述的类型才进行主键拆分查询"
+ dataVerificate.allFileType , NO ,所有表都落文件开关(暂无使用)
+ servlet.port ,8080,MTK WEB 服务的监听端口
+ kafka.bootstrap.servers, localhost:9092 ,kafka 的启动地址
+ metric.topic.name , metric ,指标中的topic名称
+ schema.register.url ,  ,"迁移使用的 schema register的地址, 如果配配置为空或者不配置，则不使用schema register"
+ use.flow.name.as.topic.name , false ,是否使用任务的名称当作 kafka的名字，默认位false。
+ max.migration.partition.num ,50,页面可输入的迁移分片的线程数， 页面输入超过此配置值，则提示出错。
+ split.table.mode ,0,表分片规则 1表示按大小分片 0表示按条数分
+ pause.sink.when.started , false ,增量同步时，
+ sink.asynchronous, false ,是否异步创建目标端task，用于在线DDL阻塞时接收stop指令。只有支持在线DDL的情况下需要配置为true
+ source.connector.thread.factor ,1,"线段线程数和目标端线程数的比例因子， 默认为4
+页面上配置如果是20 的话， 那么源端的线程数为 floor(20 /4) = 5 
+页面上配置如果是19 的话， 那么源端的线程数为 floor(19 /4) = 4"
+ use.flow.name.as.topic.name , false ,用界面输入的同步的名称作为topic的名称
+ use.flow.name.as.topic.name , false ,用界面输入的同步的名称作为topic的名称
+ acl.user.config.path , user.tsv ,磁盘文件存储的用户新，过期配置，已经废弃
+ common.pool.core ,100,配置核心线程数
+ common.pool.max ,200,配置最大线程数
+ common.pool.queue ,100,配置队列大小
+ mtk.aes.key , aiops_antdb_public_1234567890+ ,数据库密码加密秘钥
+ login.whiteUrls , '' ,访问白名单，配置在此处的URL，将不受登录控制影响。 多个url使用逗号分开
+ amca.retry.times ,3,DDL转换失败重试次数
+ amca.retry.await_seconds,1,DDL转换失败等待时间间隔

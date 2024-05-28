@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.better.mapper.DirectoryMapper">
+
+
+    <resultMap id="BaseResultMap" type="com.better.bean.Directory">
+
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="parentId" column="parent_id" jdbcType="INTEGER"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="sortNum" column="sort_num" jdbcType="BIGINT"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+
+    </resultMap>
+    <sql id="Base_Column_List">
+        id
+        ,name,parent_id,description,remark,sort_num,create_time,update_time
+    </sql>
+
+    <select id="selectDirectoryByParentId" resultType="com.better.bean.Directory">
+        select *
+        from directory
+        <if test="parentId != null">
+            where parent_id = #{parentId}
+        </if>
+        <if test="parentId == null">
+            where parent_id is null
+        </if>
+
+    </select>
+
+
+    <select id="selectAll" resultType="com.better.bean.Directory">
+        select *
+        from directory;
+    </select>
+    <select id="getAllByName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from directory
+        where
+        name = #{name,jdbcType=VARCHAR}
+    </select>
+    <select id="getAllByNameAndParentId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from directory
+        where
+        name = #{name,jdbcType=VARCHAR}
+        AND parent_id = #{parentId,jdbcType=NUMERIC}
+    </select>
+    <insert id="insertBatch">
+        insert into directory(id ,name,parent_id,
+        create_time,absolute_path)
+        values
+        <foreach collection="directoryCollection" item="item" separator=",">
+            (#{item.id,jdbcType=INTEGER},
+             #{item.name,jdbcType=VARCHAR},
+             #{item.parentId,jdbcType=NUMERIC},
+            #{item.createTime,jdbcType=TIMESTAMP},
+            #{item.absolutePath,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+
+</mapper>

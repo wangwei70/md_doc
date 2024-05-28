@@ -1,0 +1,24 @@
+POST http://localhost:8080/doc/page/list
+Accept: */*
+Cache-Control: no-cache
+
+{    	"directoryId":2 	"pageNum":2,     "pageSize":5,     "search":"安装需要主机" }
+
+###
+
+POST http://localhost:8080/doc/page/list
+Accept: */*
+Cache-Control: no-cache
+
+{    	"directoryId":2 	"pageNum":2,     "pageSize":5,     "search":"安装需要主机" }
+
+###
+
+POST http://localhost:8276/doc/page/list
+Accept: */*
+Cache-Control: no-cache
+
+{    	"directoryId":2 	"pageNum":2,     "pageSize":5,     "search":"安装需要主机" }
+
+###
+

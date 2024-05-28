@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "help.doc",
+      "type": "com.better.config.DocProperty",
+      "sourceType": "com.better.config.DocProperty"
+    }
+  ],
+  "properties": [
+    {
+      "name": "help.doc.accurate-dir",
+      "type": "java.lang.String",
+      "sourceType": "com.better.config.DocProperty"
+    },
+    {
+      "name": "help.doc.classpath-dir",
+      "type": "java.lang.String",
+      "sourceType": "com.better.config.DocProperty"
+    },
+    {
+      "name": "help.doc.enable-reload",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.better.config.DocProperty"
+    }
+  ],
+  "hints": []
+}
